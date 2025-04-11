@@ -1,0 +1,101 @@
+<div class="max-w-6xl mx-auto p-6 space-y-8">
+
+  <!-- 📦 Flex container for form and summary -->
+  <div class="flex flex-col md:flex-row md:space-x-6 space-y-6 md:space-y-0">
+
+    <!-- 📝 Order Form -->
+    <form
+      id="order-edit-form"
+      class="w-full md:w-2/3 bg-white p-6 rounded-xl shadow space-y-4 border border-purple-100"
+    >
+      <h2 class="text-xl font-bold text-purple-700">Nueva orden</h2>
+
+      <!-- Client Name -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Nombre del cliente</label>
+        <input
+          type="text"
+          class="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-purple-300"
+          [value]="clientName()"
+          (input)="clientName.set(txtName.value)"
+          #txtName
+          placeholder="John Doe"
+        />
+      </div>
+
+      <!-- Client Email -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+        <input
+          type="email"
+          class="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-purple-300"
+          [value]="clientEmail()"
+          (input)="clientEmail.set(txtEmail.value)"
+          #txtEmail
+        />
+      </div>
+
+      <!-- Shipping Cost -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Costo de envio</label>
+        <input
+          type="number"
+          class="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-purple-300"
+          [value]="shippingPriceMxn()"
+          (input)="shippingPriceMxn.set(parseFloat(txtShippingPrice.value) || 0)"
+          #txtShippingPrice
+          placeholder="0.00"
+        />
+      </div>
+
+      <!-- Buttons -->
+      <div class="flex gap-3">
+        <button
+          type="button"
+          (click)="updateOrder()"
+          class="bg-purple-600 text-white px-4 py-2 rounded-lg shadow hover:bg-purple-700 transition"
+        >
+          Cambiar
+        </button>
+        <button
+          type="button"
+          (click)="updateExchangeRate()"
+          class="bg-purple-600 text-white px-4 py-2 rounded-lg shadow hover:bg-purple-700 transition"
+        >
+          Actualizar tipo de cambio
+        </button>
+        <button
+          type="button"
+          (click)="goBackToOrderList()"
+          class="bg-red-600 text-white px-4 py-2 rounded-lg shadow hover:bg-purple-700 transition"
+        >
+          Regresar
+        </button>
+      </div>
+    </form>
+
+    <!-- 📋 Read-Only Order Summary -->
+    <div
+      id="order-summary-id"
+      class="w-full md:w-1/3 bg-white p-6 rounded-xl shadow border border-purple-100 space-y-4"
+    >
+      <h3 class="text-lg font-semibold text-purple-700">Datos de orden</h3>
+      <p>Precio de dolar: {{ exchangeRateService.usdToMxnRate() }}</p>
+
+      <div class="grid grid-cols-2 gap-4 text-sm text-gray-700">
+        <div><span class="font-medium">Total USD:</span> ${{ totalPriceUsd() }}</div>
+        <div><span class="font-medium">Total MXN:</span> ${{ totalPriceMxn() }}</div>
+        <div><span class="font-medium">Envio (MXN):</span> ${{ shippingPriceMxn() }}</div>
+        <div><span class="font-medium">Fecha:</span> {{ createdAt() | date: 'medium' }}</div>
+        <div><span class="font-medium">Estado:</span> {{ status() }}</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 📦 Order Details Table Placeholder -->
+  <div class="bg-gray-50 p-6 rounded-xl shadow-inner border border-dashed border-purple-200">
+    <p class="text-gray-500 italic text-sm">[ Order details table will go here ]</p>
+  </div>
+
+</div>

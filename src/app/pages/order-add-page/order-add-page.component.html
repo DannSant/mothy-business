@@ -1,0 +1,44 @@
+<!-- 📝 Order Form -->
+<form class="bg-white p-6 rounded-xl shadow space-y-4 border border-purple-100">
+  <h2 class="text-xl font-bold text-purple-700">Nueva orden</h2>
+
+  <!-- 🔴 Error Message -->
+  @if (showError()) {
+    <div class="bg-red-100 text-red-700 border border-red-300 px-4 py-2 rounded-lg">
+      Por favor completa todos los campos requeridos.
+    </div>
+  }
+
+  <div>
+    <label class="block text-sm font-medium text-gray-700 mb-1">Nombre del cliente</label>
+    <input
+      type="text"
+      class="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-purple-300"
+      [value]="clientName()"
+      (input)="clientName.set(txtName.value)"
+      #txtName
+      placeholder="John Doe"
+    />
+  </div>
+
+  <div>
+    <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+    <input
+      type="email"
+      class="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-purple-300"
+      [value]="clientEmail()"
+      (input)="clientEmail.set(txtEmail.value)"
+      #txtEmail
+      placeholder="john@example.com"
+    />
+  </div>
+
+  <button
+    type="button"
+    (click)="createOrder()"
+    class="bg-purple-600 text-white px-4 py-2 rounded-lg shadow hover:bg-purple-700 transition"
+  >
+    Crear orden
+  </button>
+</form>
+<toast-component></toast-component>

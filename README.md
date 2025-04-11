@@ -1,4 +1,6 @@
 # MothyBusiness
+Project to manage products and sales for a custom system for Bethesda Gear merchandise
+
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.6.
 
