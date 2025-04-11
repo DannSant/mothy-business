@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { SupabaseClient, createClient, PostgrestSingleResponse, PostgrestError } from '@supabase/supabase-js';
 import { Order, Orderstatus } from '../interfaces/order.interface';
 import { OrderDetail } from '../interfaces/order-detail.interface';
+import { environment } from '../../environments/environment';
 
-const SUPABASE_URL = 'https://chyckjftqxxkhmrqpmxu.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNoeWNramZ0cXh4a2htcnFwbXh1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDM4MTA5MjYsImV4cCI6MjA1OTM4NjkyNn0.SIvErP5jGbAk9_be-mcJsEZIeNUFA6IG97BwFY8-tiM';
+const SUPABASE_URL = environment.supabaseUrl;
+const SUPABASE_KEY = environment.supabaseKey;
 
 @Injectable({
   providedIn: 'root'

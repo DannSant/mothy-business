@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { catchError, map } from 'rxjs/operators';
 import { of } from 'rxjs';
-const ACCESS_KEY = '458eba4baf4d84c7e81c46f29efbf8ff'
+
 
 @Injectable({
   providedIn: 'root'
