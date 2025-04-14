@@ -22,6 +22,7 @@ export default class OrderListPageComponent {
 
   private async loadOrders() {
     const { data, error } = await this.orderService.getOrders();
+
      if (error) {
        console.error('Error loading products:', error);
      } else {

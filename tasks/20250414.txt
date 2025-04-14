@@ -1,0 +1,3 @@
+-Should take price from product catalogs in order details
+-Earnings should be set as percentage
+-Refresh screen when change order status

@@ -1,6 +1,6 @@
 import { OrderDetail } from "./order-detail.interface";
 
-export enum Orderstatus{
+export enum OrderStatus{
   NEW='new', //recien creada y solicitada
   REQUESTED = 'requested', //se mandó la orden al proveedor
   PAID = 'paid', //se pagó la orden
@@ -16,8 +16,9 @@ export interface Order {
   totalPriceMxn: number;
   shippingPriceMxn: number;
   createdAt: Date;
-  status: Orderstatus;
+  status: OrderStatus;
   clientName:string;
   clientEmail?:string;
+  currentExchange?:number;
 }
 
